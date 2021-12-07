@@ -1,0 +1,58 @@
+#include <iostream>
+#include <fstream>
+#include <iomanip>
+
+using namespace std;
+
+int determineFuelUsage(int a){
+    if (a <= 0){
+        return 0;
+    }else{
+        return a + determineFuelUsage(a-1);
+    }
+}
+
+int main()
+{
+    ifstream infile("input.txt");
+    
+    int min=0,max=0,count=0,a;
+    int array[999] = {0};
+    
+    while (infile >> a){
+        array[count] = a;
+        count++;
+        if (count==1){
+            min = a;
+            max = a;
+        }else{
+            if (a < min){
+                min = a;
+            }else if (a > max){
+                max = a;
+            }
+        }
+    }
+    
+    int minFuel = -1;
+    for (int a = min; a <= max; a++){
+        int fuel = 0;
+        for (int b = 0; b < count; b++){
+            int temp = array[b] - a;
+            if (temp<0){
+                temp *= -1;
+            }
+            temp = determineFuelUsage(temp);
+            fuel += temp;
+        }
+        if (minFuel == -1){
+            minFuel = fuel;
+        }else if (fuel < minFuel){
+            minFuel = fuel;
+        }
+    }
+    
+    cout << minFuel;
+    
+    return 0;
+}
