@@ -2,6 +2,8 @@
 #include <fstream>
 #include <iomanip>
 
+//This code is hella unoptimized but damn if I'm not awake enough to optimize it rn
+
 using namespace std;
 
 int determineFuelUsage(int a){
