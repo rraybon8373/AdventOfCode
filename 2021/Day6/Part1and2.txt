@@ -1,0 +1,45 @@
+#include <iostream>
+#include <fstream>
+#include <iomanip>
+
+using namespace std;
+
+int main()
+{
+    cout << "Which input file? (1 or 2)" << endl;
+    int a = 0;
+    while (a != 1 && a!=2){
+        cin >> a;
+    }
+    string s = "input.txt";
+    if (a == 2){
+        s = "input2.txt";
+    }
+    cout << "How many days?" << endl;
+    int numDays = -1;
+    while (numDays < 0){
+        cin >> numDays;
+    }
+    ifstream infile(s);
+    std::array <double,9> AgeCount;
+    for (int a = 0; a < 9; a++){
+        AgeCount[a] = 0;
+    }
+    while (infile >> a){
+        AgeCount[a]++;
+    }
+    
+    for (int a = 0; a < numDays; a++){
+        AgeCount = {AgeCount[1],AgeCount[2],AgeCount[3],AgeCount[4],AgeCount[5],AgeCount[6],AgeCount[7]+AgeCount[0],AgeCount[8],AgeCount[0]};
+    }
+    
+    double FishNum = 0;
+    
+    for (int a = 0; a < 9; a++){
+        FishNum += AgeCount[a];
+    }
+    
+    cout << std::setprecision(100) << FishNum;
+
+    return 0;
+}
