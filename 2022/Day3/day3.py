@@ -41,3 +41,4 @@ for i in range(int(len(data)/3)):
                     flag = 1
                     break
 print(sum)
+#Not the most efficient solution, but it worked for what was given
