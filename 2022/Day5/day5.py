@@ -26,8 +26,10 @@ for i in data:
             part1stacks[int(ins[2])-1].insert(0,part1stacks[int(ins[1])-1].pop(0))
         for count in range(int(ins[0]),0,-1):
             part2stacks[int(ins[2])-1].insert(0,part2stacks[int(ins[1])-1].pop(count-1))
+            
 for i in range(iters):
     print(part1stacks[i][0], end = "")
 print()
 for i in range(iters):
     print(part2stacks[i][0], end = "")
+#Not much to say about this one, I'm surprised I stumbled upon the logic for part 2 so easily
